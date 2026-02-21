@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_CONTAS 100
+
+typedef struct {
+    int numeroConta;
+    char nome[100];
+    char cpf[15];
+    char telefone[20];
+    double saldo;
+} ContaBancaria;
+
+int buscarConta(ContaBancaria c[], int n, int num){
+    if(n==0) return -1;
+    for(int i=0;i<n;i++) if(c[i].numeroConta==num) return i;
+    return -2;
+}
+
+void limparBuffer(){ int ch; while((ch=getchar())!='\n' && ch!=EOF); }
+void lerString(char *s,int t){ if(fgets(s,t,stdin)){ s[strcspn(s,"\n")]=0; } else s[0]=0; }
+
+void cadastrarConta(ContaBancaria c[], int *n){
+    if(*n>=MAX_CONTAS){ printf("\nERRO: limite atingido.\n"); return; }
+    int num; printf("\nNumero da nova conta: "); if(scanf("%d",&num)!=1){ limparBuffer(); return; } limparBuffer();
+    if(buscarConta(c,*n,num)>=0){ printf("\nERRO: conta ja existe.\n"); return; }
+    int i=*n;
+    c[i].numeroConta=num;
+    printf("Nome: "); lerString(c[i].nome,100);
+    printf("CPF (XXX.XXX.XXX-XX): "); lerString(c[i].cpf,15);
+    printf("Telefone: "); lerString(c[i].telefone,20);
+    c[i].saldo=0.0; (*n)++;
+    printf("\nConta %d cadastrada para %s\n",num,c[i].nome);
+}
+
+void consultarSaldo(ContaBancaria c[], int n){
+    int num; printf("\nNumero da conta: "); if(scanf("%d",&num)!=1){ limparBuffer(); return;} limparBuffer();
+    int p=buscarConta(c,n,num);
+    if(p<0) printf("\nERRO: conta %d nao cadastrada.\n",num);
+    else printf("\nTitular: %s\nSaldo: R$ %.2f\n", c[p].nome, c[p].saldo);
+}
+
+void fazerDeposito(ContaBancaria c[], int n){
+    int num; double v;
+    printf("\nNumero da conta: "); if(scanf("%d",&num)!=1){ limparBuffer(); return;} limparBuffer();
+    int p=buscarConta(c,n,num);
+    if(p<0){ printf("\nERRO: conta %d nao cadastrada.\n",num); return; }
+    printf("\nConta: %s\nSaldo atual: R$ %.2f\nValor a depositar: ", c[p].nome, c[p].saldo);
+    if(scanf("%lf",&v)!=1){ limparBuffer(); return; } limparBuffer();
+    if(v<=0) printf("\nERRO: valor invalido.\n");
+    else{ c[p].saldo+=v; printf("\nDeposito efetuado. Novo saldo: R$ %.2f\n", c[p].saldo); }
+}
+
+void fazerSaque(ContaBancaria c[], int n){
+    int num; double v;
+    printf("\nNumero da conta: "); if(scanf("%d",&num)!=1){ limparBuffer(); return;} limparBuffer();
+    int p=buscarConta(c,n,num);
+    if(p<0){ printf("\nERRO: conta %d nao cadastrada.\n",num); return; }
+    printf("\nConta: %s\nSaldo atual: R$ %.2f\nValor a sacar: ", c[p].nome, c[p].saldo);
+    if(scanf("%lf",&v)!=1){ limparBuffer(); return; } limparBuffer();
+    if(v<=0) printf("\nERRO: valor invalido.\n");
+    else if(v>c[p].saldo) printf("\nERRO: saldo insuficiente (R$ %.2f)\n", c[p].saldo);
+    else{ c[p].saldo-=v; printf("\nSaque efetuado. Novo saldo: R$ %.2f\n", c[p].saldo); }
+}
+
+void exibirContas(ContaBancaria c[], int n){
+    printf("\n--- Listagem de Contas ---\n");
+    if(n==0){ printf("Nenhuma conta cadastrada.\n------------------------\n"); return; }
+    for(int i=0;i<n;i++)
+        printf("Conta:%d | Titular:%s | CPF:%s | Tel:%s | Saldo:R$ %.2f\n",
+               c[i].numeroConta,c[i].nome,c[i].cpf,c[i].telefone,c[i].saldo);
+    printf("------------------------\n");
+}
+
+int main(){
+    ContaBancaria corr[MAX_CONTAS]={0}, poup[MAX_CONTAS]={0};
+    int qtdCorr=0,qtdPoup=0;
+    int menuPrincipal,acao;
+    do{
+        printf("\033[H\033[J"); // limpa tela (ANSI)
+        printf("--- BANCO DINHEIRO CERTO ---\n1. Conta Corrente\n2. Conta Poupanca\n0. Sair\nOpcao: ");
+        if(scanf("%d",&menuPrincipal)!=1){ limparBuffer(); break; } limparBuffer();
+        if(menuPrincipal==0) break;
+        ContaBancaria *cad = (menuPrincipal==1)?corr:poup;
+        int *qtd = (menuPrincipal==1)?&qtdCorr:&qtdPoup;
+        printf("\n--- %s ---\n", (menuPrincipal==1)?"CONTA CORRENTE":"CONTA POUPANCA");
+        do{
+            printf("\n1.Cadastrar\n2.Consultar saldo\n3.Deposito\n4.Saque\n5.Listar contas\n0.Voltar\nOpcao: ");
+            if(scanf("%d",&acao)!=1){ limparBuffer(); acao=0; } limparBuffer();
+            switch(acao){
+                case 1: cadastrarConta(cad,qtd); break;
+                case 2: consultarSaldo(cad,*qtd); break;
+                case 3: fazerDeposito(cad,*qtd); break;
+                case 4: fazerSaque(cad,*qtd); break;
+                case 5: exibirContas(cad,*qtd); break;
+                case 0: break;
+                default: printf("Opcao invalida!\n"); break;
+            }
+            if(acao!=0){ printf("\nPressione ENTER para continuar..."); getchar(); }
+        }while(acao!=0);
+    }while(1);
+    printf("Obrigado por usar o sistema!\n");
+    return 0;
+}
