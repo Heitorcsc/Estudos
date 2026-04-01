@@ -109,3 +109,108 @@ while contador < 10000:
     if contador % n == 2:
         print(contador)
     contador += 1
+
+    a= int(input())
+b = int(input())
+x = a + b
+print("SOMA =",(x))
+
+a = int(input())
+b = int(input())
+
+x = a*b
+print("PROD =",(x))
+
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+
+dif = (a*b) - (c*d)
+print("DIFERENCA =",(dif))
+nome = input()
+sf = float(input())
+tv = float(input())
+
+x = sf + (tv * 0.15)
+
+print("TOTAL = R$ {:.2f}".format(x))
+
+c1,n1,v1 = map(float,input().split())
+c2,n2,v2 = map(float,input().split())
+
+total = (n1 * v1) + (n2 * v2)
+
+print(f"VALOR A PAGAR: R$ {total:.2f}")
+r = float(input())
+
+c = (4/3) * 3.14159 * (r*r*r)
+
+print("VOLUME = {:.3f}".format(c))
+
+a, b, c = map(int, input().split())
+
+maior_ab = (a + b + abs(a - b)) // 2
+maior_abc = (maior_ab + c + abs(maior_ab - c)) // 2
+
+print(f"{maior_abc} eh o maior")
+
+k = int(input())
+cg = float(input())
+
+x = k / cg
+
+print("{:.3f} km/l".format(x))
+
+from math import sqrt
+
+x1,y1 = map(float,input().split())
+x2,y2 = map(float,input().split())
+
+
+x = ((x2 - x1)**2) + ((y2 - y1)**2)
+dist = sqrt(x)
+
+print("{:.4f}".format(dist))
+
+d = int(input())
+
+t = d * 2
+
+print((t),"minutos")
+t = int(input())
+v = int(input())
+
+d = t * v
+l = d / 12
+print("{:.3f}".format(l)) 
+
+valor = int(input())
+print(valor)
+
+notas = [100, 50, 20, 10, 5, 2, 1]
+
+for nota in notas:
+    qtd = valor // nota
+    print(f"{qtd} nota(s) de R$ {nota},00")
+    valor %= nota
+
+
+N = int(input())
+
+horas = N // 3600
+minutos = (N % 3600) // 60
+segundos = N % 60
+
+print(f"{horas}:{minutos}:{segundos}")
+
+d = int(input())
+
+a = d // 365
+dr = d % 365
+m = dr // 30
+df = dr % 30
+
+print(f"{a} ano(s)")
+print(f"{m} mes(es)")
+print(f"{df} dia(s)")
