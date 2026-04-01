@@ -1,0 +1,44 @@
+a = float(input())
+b = float(input())
+c = float(input())
+media = (2 * a) + (3 * b) + (5 * c)
+p = media / 10
+
+print("MEDIA = {:.1f}".format(p))
+
+pi =  3.14159
+raio = float(input())
+A = pi * raio ** 2
+
+
+print("A={:.4f}".format(A))
+
+A = int(input())
+B = int(input())
+
+X = A + B
+
+print("X =",X)
+A = float(input())
+B = float(input())
+
+media = (3.5 * A) + (7.5 * B)
+d = media / 11
+print("MEDIA = {:.5f}".format(d))
+
+
+nf = int(input())
+nh = int(input())
+vph = float(input())
+
+salario = nh * vph 
+
+print("NUMBER =",nf)
+print("SALARY = U$ {:.2f}".format(salario))
+
+p = [0, 4.00, 4.50, 5.00, 2.00, 1.50]
+
+c, q = map(int, input().split())
+
+t = p[c] * q
+print("Total: R$ {:.2f}".format(t))
