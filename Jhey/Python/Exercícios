@@ -1,3 +1,6 @@
+print("Hello World!")
+
+
 a = float(input())
 b = float(input())
 c = float(input())
@@ -42,3 +45,67 @@ c, q = map(int, input().split())
 
 t = p[c] * q
 print("Total: R$ {:.2f}".format(t))
+
+n = int(input())
+
+contador = n 
+
+while contador > 0:
+    n1, n2, n3 = map(float,input().split())
+    
+    x = ((2 * n1) + ( 3 * n2) + (5 * n3)) / 10
+
+    contador = contador - 1
+
+    print("{:.1f}".format(x)) 
+
+n = int(input())
+
+contador = 1
+
+while contador <= 10:
+    x = n * contador 
+    
+    print(f"{contador} x {n} = {x}")
+    contador += 1
+    n = int(input())
+
+contador = 1
+
+while contador <= 10:
+    x = n * contador 
+    
+    print(f"{contador} x {n} = {x}")
+    contador += 1
+
+    n = int(input())
+
+dentro = 0
+fora = 0
+contador = 0
+
+while contador < n:
+    x = int(input())
+    if 10 <= x <= 20:
+        dentro += 1
+    else:
+        fora += 1
+    contador += 1
+
+print("{} in".format(dentro))
+print("{} out".format(fora))
+
+n = int(input())
+
+contador = 1
+while contador <= n:
+    if contador % 2 == 0:
+        print("{}^2 = {}".format(contador, contador * contador))
+    contador += 1
+
+n = int(input())
+contador = 1
+while contador < 10000:
+    if contador % n == 2:
+        print(contador)
+    contador += 1

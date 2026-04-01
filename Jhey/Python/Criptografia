@@ -1,0 +1,26 @@
+N = int(input())
+
+for _ in range(N):
+    linha = input()
+
+   
+    nova = []
+    for c in linha:
+        if ('a' <= c <= 'z') or ('A' <= c <= 'Z'):
+            nova.append(chr(ord(c) + 3))
+        else:
+            nova.append(c)
+    nova = ''.join(nova)
+
+    
+    invertida = nova[::-1]
+
+    
+    metade = len(invertida) // 2
+    resultado = []
+    for i in range(len(invertida)):
+        if i >= metade:
+            resultado.append(chr(ord(invertida[i]) - 1))
+        else:
+            resultado.append(invertida[i])
+    print(''.join(resultado))

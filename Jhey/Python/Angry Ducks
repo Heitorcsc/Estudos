@@ -1,0 +1,39 @@
+import math
+
+def main():
+    g = 9.80665
+    pi = 3.14159
+
+    try:
+        while True:
+            h = float(input())
+            p1, p2 = map(int, input().split())
+            n = int(input())
+            for _ in range(n):
+                a, v = map(float, input().split())
+                rad = a * pi / 180
+                vx = v * math.cos(rad)
+                vy = v * math.sin(rad)
+
+                
+                A = -0.5 * g
+                B = vy
+                C = h
+                delta = B*B - 4*A*C
+                if delta < 0:
+                    print("0.00000 -> NUCK")
+                    continue
+
+                t1 = (-B + math.sqrt(delta)) / (2 * A)
+                t2 = (-B - math.sqrt(delta)) / (2 * A)
+                t = max(t1, t2)
+
+                x = vx * t
+                if p1 <= x <= p2:
+                    print(f"{x:.5f} -> DUCK")
+                else:
+                    print(f"{x:.5f} -> NUCK")
+    except EOFError:
+        pass
+
+main()

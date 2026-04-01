@@ -1,0 +1,31 @@
+def plano_de_dieta():
+    n = int(input())  
+    for _ in range(n):
+        dieta = input().strip()
+        cafe = input().strip()
+        almoco = input().strip()
+
+       
+        comidas = cafe + almoco
+
+        
+        dieta_lista = list(dieta)  
+        cheater = False
+
+        for comida in comidas:
+            if comida in dieta_lista:
+                dieta_lista.remove(comida)  
+            else:
+                cheater = True
+                break
+
+        if cheater:
+            print("CHEATER")
+        else:
+            
+            jantar = sorted(dieta_lista)
+            print("".join(jantar))
+
+
+
+plano_de_dieta()

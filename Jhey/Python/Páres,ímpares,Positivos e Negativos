@@ -1,0 +1,71 @@
+n1 = int(input())
+n2 = int(input())
+n3 = int(input())
+n4 = int(input())
+n5 = int(input())
+
+contadorpar = 0
+contadorimpar = 0
+contadorpos = 0 
+contadorneg = 0
+
+
+if n1 % 2 == 0:
+    contadorpar += 1
+else:
+    contadorimpar += 1
+
+if n1 > 0:
+    contadorpos += 1
+elif n1 < 0:
+    contadorneg += 1
+
+
+if n2 % 2 == 0:
+    contadorpar += 1
+else:
+    contadorimpar += 1
+
+if n2 > 0:
+    contadorpos += 1
+elif n2 < 0:
+    contadorneg += 1
+
+
+if n3 % 2 == 0:
+    contadorpar += 1
+else:
+    contadorimpar += 1
+
+if n3 > 0:
+    contadorpos += 1
+elif n3 < 0:
+    contadorneg += 1
+
+
+if n4 % 2 == 0:
+    contadorpar += 1
+else:
+    contadorimpar += 1
+
+if n4 > 0:
+    contadorpos += 1
+elif n4 < 0:
+    contadorneg += 1
+
+
+if n5 % 2 == 0:
+    contadorpar += 1
+else:
+    contadorimpar += 1
+
+if n5 > 0:
+    contadorpos += 1
+elif n5 < 0:
+    contadorneg += 1
+
+
+print("{} valor(es) par(es)".format(contadorpar))
+print("{} valor(es) impar(es)".format(contadorimpar))
+print("{} valor(es) positivo(s)".format(contadorpos))
+print("{} valor(es) negativo(s)".format(contadorneg))

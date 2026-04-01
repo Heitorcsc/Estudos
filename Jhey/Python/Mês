@@ -1,0 +1,28 @@
+n = int(input())
+
+meses = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+
+if n == 1:
+    print(meses[0])
+if n == 2:
+    print(meses[1]) 
+if n == 3:
+    print(meses[2]) 
+if n == 4:
+    print(meses[3]) 
+if n == 5:
+    print(meses[4]) 
+if n == 6:
+    print(meses[5]) 
+if n == 7:
+    print(meses[6]) 
+if n == 8:
+    print(meses[7]) 
+if n == 9:
+    print(meses[8]) 
+if n == 10:
+    print(meses[9]) 
+if n == 11:
+    print(meses[10]) 
+if n == 12:
+    print(meses[11]) 

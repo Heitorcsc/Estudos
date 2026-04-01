@@ -1,0 +1,27 @@
+def gera_pisano(mod):
+    fib = [0, 1]
+    while True:
+        next_fib = (fib[-1] + fib[-2]) % mod
+        if fib[-1] == 0 and next_fib == 1:
+            break
+        fib.append(next_fib)
+    return fib[:-1]  
+
+def binario_modulo(b, mod):
+    res = 0
+    for bit in b:
+        res = (res * 2 + int(bit)) % mod
+    return res
+
+def main():
+    pisano = gera_pisano(1000)
+    P = len(pisano)
+
+    T = int(input())
+    for _ in range(T):
+        b = input().strip()
+        n = binario_modulo(b, P)
+        print(f"{pisano[n]:03}")
+
+if __name__ == "__main__":
+    main()

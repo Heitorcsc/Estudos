@@ -1,0 +1,40 @@
+n1 = float(input())
+n2 = float(input())
+n3 = float(input())
+n4 = float(input())
+n5 = float(input())
+n6 = float(input())
+
+
+contador = 0
+soma_positivos = 0
+
+
+if n1 > 0:
+    contador += 1
+    soma_positivos += n1
+if n2 > 0:
+    contador += 1
+    soma_positivos += n2
+if n3 > 0:
+    contador += 1
+    soma_positivos += n3
+if n4 > 0:
+    contador += 1
+    soma_positivos += n4
+if n5 > 0:
+    contador += 1
+    soma_positivos += n5
+if n6 > 0:
+    contador += 1
+    soma_positivos += n6
+
+
+if contador > 0:  
+    media = soma_positivos / contador
+else:
+    media = 0  
+
+
+print("{} valores positivos".format(contador))
+print("{:.1f}".format(media))

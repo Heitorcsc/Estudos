@@ -1,0 +1,15 @@
+hora1, minuto1, hora2, minuto2 = map(int, input().split()) 
+
+i = hora1 * 60 + minuto1
+f = hora2 * 60 + minuto2
+
+if f <= i:
+    f += 24 * 60
+
+
+
+dt = f - i
+dh = dt // 60 
+dm = dt % 60 
+
+print("O JOGO DUROU {} HORA(S) E {} MINUTO(S)".format(dh, dm))

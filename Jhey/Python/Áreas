@@ -1,0 +1,13 @@
+a,b,c = map(float,input().split())
+
+c1 = (a * c) / 2
+c2 = 3.14159 * (c*c)
+c3 = ((a + b) * c) / 2
+c4 = b*b
+c5 = a * b
+
+print("TRIANGULO: {:.3f}".format(c1))
+print("CIRCULO: {:.3f}".format(c2))
+print("TRAPEZIO: {:.3f}".format(c3))
+print("QUADRADO: {:.3f}".format(c4))
+print("RETANGULO: {:.3f}".format(c5))

@@ -1,0 +1,15 @@
+import math
+
+
+N = int(input())
+
+
+for i in range(N):
+   
+    F1, F2 = map(int, input().split())
+
+    
+    resultado = math.gcd(F1, F2)
+
+    
+    print(resultado)
